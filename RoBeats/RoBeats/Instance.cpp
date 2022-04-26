@@ -28,15 +28,6 @@ vector<uintptr_t> Instance::_getChildren() const {
 	return children;
 }
 
-vector<Instance> Instance::GetChildren() const {
-	vector<uintptr_t> ptrs = _getChildren();
-	vector<Instance> children;
-	children.reserve(ptrs.size());
-	for (uintptr_t ptr : ptrs)
-		children.emplace_back(ptr);
-	return children;
-}
-
 vector<Instance> Instance::GetDescendants() const {
 	vector<Instance> descendants;
 	vector<uintptr_t> children = _getChildren();

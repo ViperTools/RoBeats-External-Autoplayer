@@ -12,7 +12,6 @@ public:
 	Instance GetParent() const;
 	string GetName() const;
 	string GetClass() const;
-	vector<Instance> GetChildren() const;
 	vector<Instance> GetDescendants() const;
 	Instance FindFirstChild(string name, bool recursive = false) const;
 	Instance FindFirstChildOfClass(string className) const;
@@ -103,7 +102,6 @@ struct Adornment : Instance {
 		Read(addr + 0xF8, v, sizeof(float) * 3);
 		Position = { v[0], v[1], v[2] };
 		CFrameChanged = Position != lastPos;
-
 		Transparency = Read<float>(addr + 0x98);
 		Radius = Read<float>(addr + 0x110);
 		if (IsCylinder) {
