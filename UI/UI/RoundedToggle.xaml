@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="RoundedToggle" TargetType="ToggleButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                        <Grid>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Checked">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation To="#00A3FF" Storyboard.TargetProperty="(ToggleButton.Background).(SolidColorBrush.Color)" FillBehavior="HoldEnd" Duration="0:0:0.3">
+                        </ColorAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+            <EventTrigger RoutedEvent="Unchecked">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation To="#424242" Storyboard.TargetProperty="(ToggleButton.Background).(SolidColorBrush.Color)" FillBehavior="HoldEnd" Duration="0:0:0.3">
+                        </ColorAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

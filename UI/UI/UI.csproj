@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <RootNamespace>UI</RootNamespace>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+        <Platforms>AnyCPU;x86</Platforms>
+	    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    </PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="Fonts\GothamMedium.ttf" />
+	</ItemGroup>
+
+    <ItemGroup>
+	    <Resource Include="Fonts\GothamMedium.ttf">
+		    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    </Resource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="RoBeats.dll">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+</Project>

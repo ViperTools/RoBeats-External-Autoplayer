@@ -1,0 +1,16 @@
+﻿<Application x:Class="RoBeats_Injector_UI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:RoBeats_Injector_UI"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <FontFamily x:Key="Gotham">pack://application:,,,/Fonts/#Gotham</FontFamily>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="RoundedButton.xaml"/>
+                <ResourceDictionary Source="RoundedTextBox.xaml"/>
+                <ResourceDictionary Source="RoundedToggle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

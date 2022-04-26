@@ -1,0 +1,86 @@
+﻿<Window x:Class="UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RoBeats_Injector_UI"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Title="RoBeats Autoplayer" Height="150" Width="400"
+        MouseDown="Unfocus">
+    <Border CornerRadius="10" Background="#111111">
+        <Grid Name="MainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="75*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.025*"/>
+                <ColumnDefinition Width="0.95*"/>
+                <ColumnDefinition Width="0.025*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1" Name="Topbar">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.50*"/>
+                    <ColumnDefinition Width="0.25*"/>
+                    <ColumnDefinition Width="0.09*"/>
+                    <ColumnDefinition Width="0.08*"/>
+                    <ColumnDefinition Width="0.08*"/>
+                </Grid.ColumnDefinitions>
+                <Viewbox HorizontalAlignment="Left" Margin="8,0,0,0">
+                    <TextBlock FontFamily="{StaticResource Gotham}" Foreground="White">RoBeats Autoplayer</TextBlock>
+                </Viewbox>
+                <Button Focusable="False" Name="AttachButton" Cursor="Hand" PreviewMouseDown="Attach" Grid.Column="1" Margin="15,8,15,8" Background="#424242" Style="{StaticResource RoundedButton}">
+                    <Viewbox>
+                        <TextBlock FontFamily="{StaticResource Gotham}" Foreground="White" Margin="5">Attach</TextBlock>
+                    </Viewbox>
+                </Button>
+                <Button PreviewMouseDown="Minimize" Cursor="Hand" Grid.Column="3" Background="Transparent" Style="{StaticResource RoundedButton}">
+                    <Viewbox>
+                        <TextBlock  Margin="0, 0, 0, 1" Foreground="White">_</TextBlock>
+                    </Viewbox>
+                </Button>
+                <Button PreviewMouseDown="Exit" Cursor="Hand" Grid.Column="4" Background="Transparent" Style="{StaticResource RoundedButton}">
+                    <Viewbox>
+                        <TextBlock Foreground="White">X</TextBlock>
+                    </Viewbox>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*"/>
+                        <ColumnDefinition Width="0.9*"/>
+                    </Grid.ColumnDefinitions>
+                    <ToggleButton Focusable="False" Cursor="Hand" Background="#424242" x:Name="ManualKeysToggle" Margin="8, 17.5, 8, 17.5" Style="{StaticResource RoundedToggle}"/>
+                    <Viewbox Grid.Column="1" HorizontalAlignment="Left" Margin="0, 20, 20, 20">
+                        <TextBlock Text="Manual Keys" Foreground="White" FontFamily="{StaticResource Gotham}"/>
+                    </Viewbox>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.03*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.03*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.03*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Name="Key1" FontFamily="{StaticResource Gotham}" BorderThickness="0" Background="#424242" Text="None" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Margin="8, 15, 8, 15"/>
+                        <TextBox Name="Key2" FontFamily="{StaticResource Gotham}" Grid.Column="2" BorderThickness="0" Background="#424242" Text="None" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Margin="8, 15, 8, 15"/>
+                        <TextBox Name="Key3" FontFamily="{StaticResource Gotham}" Grid.Column="4" BorderThickness="0" Background="#424242" Text="None" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Margin="8, 15, 8, 15"/>
+                        <TextBox Name="Key4" FontFamily="{StaticResource Gotham}" Grid.Column="6" BorderThickness="0" Background="#424242" Text="None" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Margin="8, 15, 8, 15"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
