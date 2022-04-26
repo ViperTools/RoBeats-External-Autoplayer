@@ -18,4 +18,5 @@ Although I called it *attaching*, the auto player does not actually inject anyth
 * If the auto player breaks for some reason, try opening the esc menu and closing it. This "resets" the autoplayer. If that doesn't work, try detaching and re-attaching. If that still doesn't work, let me know and I will try to debug it.
 * You must be focused on the Roblox application and the esc menu must not be open. If you click off of Roblox or open the esc menu the autoplayer will stop playing. This is because it works by simulating keyboard input and you don't want it spamming keys when you aren't playing the game.
 * Do not use the autoplayer with Synapse open. Synapse causes Roblox to crash when used alongside the autoplayer.
+* More features will be added over time, this is not a final product.
 * **As specified in the license, all distribution of any portion of this work must be released along with its full source and the same license attached. All modifications of the source must be documented. This includes everything in this repository.**
