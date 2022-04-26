@@ -1,10 +1,6 @@
 # Using the Autoplayer 
 First make sure to download the autoplayer in the releases tab. If you'd like to use the Lua prototype you can access it [here](https://github.com/Introvert1337/RobloxReleases/blob/main/Scripts/RoBeats/Autoplayer.lua). As with any exploit/script, use at your own risk.
 
-## VirusTotal
-Here is the VirusTotal analysis for Release 1.0: https://www.virustotal.com/gui/file/a5b8bbe3ea7d7520f8a855aad57dd279c0027f0c3f7153c7bf543947bba7e48a?nocache=1
-<br>If you still don't trust it, just read the source and build yourself.
-
 ## Manual Keys
 I **highly recommend** that you enable the `Manual Keys` option in the UI. This makes the autoplayer use the keys specified in the UI and works on every stage. If Manual Keys is disabled, it will attempt to find the keys automatically and will only work in the default stage. Setting the keys is fairly straightforward. Type in your keybinds in the order they appear in game. If you have a special keybind such as a numpad key, grab the name from here https://developer.roblox.com/en-us/api-reference/enum/KeyCode and enter it instead. Otherwise just enter the one character key name. If a key does not work, let me know and I will look into it.
 
@@ -27,3 +23,7 @@ Although I called it *attaching*, the auto player does not actually inject anyth
 * More features will be added over time, this is not a final product.
 * You can report bugs either in the Discord server or by opening an issue on this repository.
 * **As specified in the license, all distribution of any portion of this work must be released along with its full source and the same license attached. All modifications of the source must be documented. This includes everything in this repository.**
+
+## VirusTotal
+Here is the VirusTotal analysis for Release 1.0: https://www.virustotal.com/gui/file/a5b8bbe3ea7d7520f8a855aad57dd279c0027f0c3f7153c7bf543947bba7e48a?nocache=1
+<br>If you still don't trust it, just read the source and build yourself.
