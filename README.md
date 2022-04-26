@@ -10,7 +10,7 @@ Although I called it *attaching*, the auto player does not actually inject anyth
 <br>`NO RBLX` Means that Roblox is not open or the autoplayer could not find it.
 <br>`NO WS` Means it could not find the workspace and is most likely not updated.
 <br>`NO DM` Means it could not find the datamodel and is most likely not updated.
-<br>`Error: n` Specifies an unknown error and should be send in the Discord server for further inspection.
+<br>`ERROR: n` Specifies an unknown error and should be send in the Discord server for further inspection.
 
 ## Notes
 
