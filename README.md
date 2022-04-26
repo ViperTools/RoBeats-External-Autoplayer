@@ -26,4 +26,4 @@ Although I called it *attaching*, the auto player does not actually inject anyth
 
 ## VirusTotal
 Here is the VirusTotal analysis for Release 1.0: https://www.virustotal.com/gui/file/a5b8bbe3ea7d7520f8a855aad57dd279c0027f0c3f7153c7bf543947bba7e48a?nocache=1
-<br>If you still don't trust it, just read the source and build yourself.
+<br>If you still don't trust it, just read the source and build it yourself.
