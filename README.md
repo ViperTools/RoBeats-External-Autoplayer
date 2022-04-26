@@ -1,5 +1,5 @@
 # Using the Autoplayer 
-First make sure to download the autoplayer in the releases tab. If you'd like to use the Lua prototype you can access it [here](https://github.com/Introvert1337/RobloxReleases/blob/main/Scripts/RoBeats/Autoplayer.lua).
+First make sure to download the autoplayer in the releases tab. If you'd like to use the Lua prototype you can access it [here](https://github.com/Introvert1337/RobloxReleases/blob/main/Scripts/RoBeats/Autoplayer.lua). As with any exploit/script, use at your own risk.
 
 ## Manual Keys
 I **highly recommend** that you enable the `Manual Keys` option in the UI. This makes the autoplayer use the keys specified in the UI and works on every stage. If Manual Keys is disabled, it will attempt to find the keys automatically and will only work in the default stage. Setting the keys is fairly straightforward. Type in your keybinds in the order they appear in game. If you have a special keybind such as a numpad key, grab the name from here https://developer.roblox.com/en-us/api-reference/enum/KeyCode and enter it instead. Otherwise just enter the one character key name.
