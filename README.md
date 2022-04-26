@@ -6,7 +6,7 @@ I **highly recommend** that you enable the `Manual Keys` option in the UI. This 
 
 
 ## Attaching
-Although I called itg *attaching*, the auto player does not actually inject anything into Roblox and is fully external. Attaching is very easy. Click the attach button at the top of the UI after loading into RoBeats and wait for it to attach. After it attaches it will change the text to `detach`. If it says anything else it's probably an error. Use the reference below to determine a possible solution.
+Although I called it *attaching*, the auto player does not actually inject anything into Roblox and is fully external. Attaching is very easy. Click the attach button at the top of the UI after loading into RoBeats and wait for it to attach. After it attaches it will change the text to `detach`. If it says anything else it's probably an error. Use the reference below to determine a possible solution:
 `NO RBLX` Means that Roblox is not open or the autoplayer could not find it.
 `NO WS` Means it could not find the workspace and is most likely not updated.
 `NO DM` Means it could not find the datamodel and is most likely not updated.
@@ -14,6 +14,6 @@ Although I called itg *attaching*, the auto player does not actually inject anyt
 
 ## Notes
 
-* RoBeats External does auto update, but Roblox occasionally changes things that will break the auto player. If it stops working or an error code comes up suggesting it is not updated, let me know and I will look into it.
+* RoBeats External **does** auto update, but Roblox occasionally changes things that will break the auto player. If it stops working or an error code comes up suggesting it is not updated, let me know and I will look into it.
 * If the auto player breaks for some reason, try opening the esc menu and closing it. This "resets" the autoplayer. If that doesn't work, try detaching and re-attaching. If that still doesn't work, let me know and I will try to debug it.
 * You must be focused on the Roblox application and the esc menu must not be open. If you click off of Roblox or open the esc menu the autoplayer will stop playing. This is because it works by simulating keyboard input and you don't want it spamming keys when you aren't even playing the game.
