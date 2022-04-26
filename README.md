@@ -15,6 +15,8 @@ Although I called it *attaching*, the auto player does not actually inject anyth
 ## Notes
 
 * RoBeats External **does** auto update, but Roblox occasionally changes things that will break the auto player. If it stops working or an error code comes up suggesting it is not updated, let me know and I will look into it.
+* This only works on the 3D mode. 2D does not currently work, but support is planned for the future.
+* As mentioned in the `Manual Keys` section, automatic keys only work for the default stage. That means stuff like event stages **require** manual keys. Here the term stage is mentioning the game theme stages, not songs.
 * If the auto player breaks for some reason, try opening the esc menu and closing it. This "resets" the autoplayer. If that doesn't work, try detaching and re-attaching. If that still doesn't work, let me know and I will try to debug it.
 * You must be focused on the Roblox application and the esc menu must not be open. If you click off of Roblox or open the esc menu the autoplayer will stop playing. This is because it works by simulating keyboard input and you don't want it spamming keys when you aren't playing the game.
 * Do not use the autoplayer with Synapse open. Synapse causes Roblox to crash when used alongside the autoplayer.
