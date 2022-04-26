@@ -12,7 +12,6 @@ using std::wstring;
 using std::vector;
 
 using tNtReadVirtualMemory = NTSTATUS(_stdcall*)(IN HANDLE hProcess, IN PVOID lpBaseAddress, OUT PVOID lpBuffer, IN ULONG nSize, OUT PULONG lpNumberOfBytesRead);
-using tNtWriteVirtualMemory = NTSTATUS(_stdcall*)(IN HANDLE hProcess, IN PVOID lpBaseAddress, IN PVOID lpBuffer, IN ULONG nSize, OUT PULONG lpNumberOfBytesWritten);
 extern tNtReadVirtualMemory NtReadVirtualMemory;
 extern HANDLE hProc;
 extern HWND hwnd;
