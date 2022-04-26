@@ -7,10 +7,10 @@ I **highly recommend** that you enable the `Manual Keys` option in the UI. This 
 
 ## Attaching
 Although I called it *attaching*, the auto player does not actually inject anything into Roblox and is fully external. Attaching is very easy. Click the attach button at the top of the UI after loading into RoBeats and wait for it to attach. After it attaches it will change the text to `detach`. If it says anything else it's probably an error. Use the reference below to determine a possible solution:
-`NO RBLX` Means that Roblox is not open or the autoplayer could not find it.
-`NO WS` Means it could not find the workspace and is most likely not updated.
-`NO DM` Means it could not find the datamodel and is most likely not updated.
-`Error: n` Specifies an unknown error and should be send in the Discord server for further inspection.
+<br>`NO RBLX` Means that Roblox is not open or the autoplayer could not find it.
+<br>`NO WS` Means it could not find the workspace and is most likely not updated.
+<br>`NO DM` Means it could not find the datamodel and is most likely not updated.
+<br>`Error: n` Specifies an unknown error and should be send in the Discord server for further inspection.
 
 ## Notes
 
