@@ -29,7 +29,6 @@ namespace RoBeats {
 		static vector<vector<Vector3>> lanePositions;
 	};
 
-	extern vector<Vector3>& currentLanePositions;
 	extern int lanePositionsIndex;
 	extern ExternalConfig config;
 	extern array<string, 4> keys;

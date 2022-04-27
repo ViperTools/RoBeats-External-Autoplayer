@@ -80,7 +80,7 @@ struct GuiService : Instance {
 	using Instance::Instance;
 
 	bool IsMenuOpen() {
-		return Read<bool>(addr + 0x1B0);
+		return Read<bool>(addr + 0x1B4);
 	}
 };
 
