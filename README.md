@@ -26,5 +26,5 @@ Although I called it *attaching*, the auto player does not actually inject anyth
 * **As specified in the license, all distribution of any portion of this work must be released along with its full source and the same license attached. All modifications of the source must be documented. This includes everything in this repository.**
 
 ## VirusTotal
-Here is the VirusTotal analysis for Release 1.0: https://www.virustotal.com/gui/file/a5b8bbe3ea7d7520f8a855aad57dd279c0027f0c3f7153c7bf543947bba7e48a?nocache=1
+Here is the VirusTotal analysis for Release 1.0: https://www.virustotal.com/gui/file/5da7156521f3095e7ed7521540b8d59b2b2d0e54738effe312ec6c285037c8b9?nocache=1
 <br>If you still don't trust it, just read the source and build it yourself.
