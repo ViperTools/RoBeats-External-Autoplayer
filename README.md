@@ -14,6 +14,7 @@ Although I called it *attaching*, the auto player does not actually inject anyth
 
 ## Notes
 
+* You must build in x86 if building it yourself.
 * RoBeats External **does** auto update, but Roblox occasionally changes things that will break the auto player. If it stops working or an error code comes up suggesting it is not updated, let me know and I will look into it.
 * This only works on the 3D mode. 2D does not currently work, but support is planned for the future.
 * As mentioned in the `Manual Keys` section, automatic keys only work for the default stage. That means stuff like event stages **require** manual keys. Here the term stage is mentioning the game theme stages, not songs.
