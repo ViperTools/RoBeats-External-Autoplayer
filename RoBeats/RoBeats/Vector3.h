@@ -11,8 +11,16 @@ struct Vector3 {
 		magnitude = sqrt(x * x + y * y + z * z);
 	}
 
-	Vector3 operator-(const Vector3& b) {
+	Vector3 operator+(const Vector3& b) const {
+		return { x + b.x, y + b.y, z + b.z };
+	}
+
+	Vector3 operator-(const Vector3& b) const {
 		return { x - b.x, y - b.y, z - b.z };
+	}
+
+	Vector3 operator*(float b) const {
+		return { x * b, y * b, z * b };
 	}
 
 	bool operator!=(const Vector3& b) {

@@ -9,21 +9,34 @@ using namespace RoBeats;
 Instance RoBeats::game;
 Workspace RoBeats::workspace;
 GuiService RoBeats::guiService;
-Bound<float> InternalConfig::distanceBound{ 0.1, 0.8 };
-Bound<int> InternalConfig::delayBound{ 8, 12 };
+Bound<float> InternalConfig::distanceBound{ 0.3, 0.8 };
+Bound<int> InternalConfig::delayBound{ 10, 13 };
 
-vector<Vector3> InternalConfig::singleplayerLanePositions {
-	Vector3 { -309.01, 387.7, -181.1 },
-	Vector3 { -306.87, 387.7, -178.56 },
-	Vector3 { -304.53, 387.7, -176.22 },
-	Vector3 { -301.99, 387.7, -174.08 }
-};
-
-vector<Vector3> InternalConfig::multiplayerLanePositions{
-	Vector3 { -309.01, 387.7, -228.63 },
-	Vector3 { -306.87, 387.7, -231.17 },
-	Vector3 { -304.53, 387.7, -233.51 },
-	Vector3 { -301.99, 387.7, -235.65 }
+vector<vector<Vector3>> InternalConfig::lanePositions {
+	{
+		Vector3 { -309.00, 387.70, -181.09 },
+		Vector3 { -306.87, 387.70, -178.56 },
+		Vector3 { -304.53, 387.70, -176.21 },
+		Vector3 { -301.99, 387.70, -174.08 }
+	},
+	{
+		Vector3 { -301.99, 387.70, -235.64 },
+		Vector3 { -304.53, 387.70, -233.51 },
+		Vector3 { -306.87, 387.70, -231.16 },
+		Vector3 { -309.00, 387.70, -228.60 }
+	},
+	{
+		Vector3 { -247.44, 387.70, -228.63 },
+		Vector3 { -249.57, 387.70, -231.16 },
+		Vector3 { -251.92, 387.70, -233.51 },
+		Vector3 { -254.46, 387.70, -235.64 }
+	},
+	{
+		Vector3 { -254.46, 387.70, -174.08 },
+		Vector3 { -251.92, 387.70, -176.21 },
+		Vector3 { -249.57, 387.70, -178.56 },
+		Vector3 { -247.44, 387.70, -181.09 }
+	}
 };
 
 std::random_device randDevice;
@@ -35,17 +48,18 @@ namespace RoBeats {
 	ExternalConfig config;
 	array<string, 4> keys { "", "", "", "" };
 	array<int, 4> delays { 0, 0, 0, 0 };
-	vector<Vector3>& lanePositions = InternalConfig::singleplayerLanePositions;
+	array<bool, 4> heldLanes { 0, 0, 0, 0 };
+	int lanePositionsIndex = 0;
 
 	bool GrabKeys() {
 		bool found = false;
 
 		for (const Instance& inst : workspace.GetDescendants()) {
 			if (inst.GetName() == "ControlPopup") {
-				int popupLane = GetNearestLane(BasePart(inst.GetAddress()).GetPosition());
+				Lane popupLane = GetNearestLane(BasePart(inst.GetAddress()).GetPosition());
 
-				if (popupLane != -1) {
-					keys[popupLane] = TextLabel(inst.FindFirstChildOfClass("SurfaceGui").FindFirstChildOfClass("Frame").FindFirstChild("Letter")).GetText();
+				if (popupLane.Lane != -1) {
+					keys[popupLane.Lane] = TextLabel(inst.FindFirstChildOfClass("SurfaceGui").FindFirstChildOfClass("Frame").FindFirstChild("Letter")).GetText();
 					found = true;
 				}
 			}
@@ -58,17 +72,35 @@ namespace RoBeats {
 		for (int i = 0; i < 4; i++) {
 			if (delays[i]) {
 				delays[i] = 0;
+				heldLanes[i] = false;
 				RbxInput::Release(keys[i]);
 			}
 		}
 	}
 
-	int GetNearestLane(Vector3 position) {
+	void UpdateLanePositions() {
+		Vector3 camPos = workspace.CurrentCamera.GetPosition();
+		float nearestDistance = InternalConfig::laneDistanceThreshold;
+		int nearestGroup = -1;
+
+		for (int i = 0; i < InternalConfig::lanePositions.size(); i++) {
+			float distance = (InternalConfig::lanePositions[i][0] - camPos).magnitude;
+
+			if (distance < nearestDistance) {
+				nearestDistance = distance;
+				nearestGroup = i;
+			}
+		}
+
+		lanePositionsIndex = nearestGroup;
+	}
+
+	Lane GetNearestLane(Vector3 position) {
 		float nearestDistance = InternalConfig::laneDistanceThreshold;
 		int nearestLane = -1;
 
 		for (int i = 0; i < 4; i++) {
-			float distance = (lanePositions[i] - position).magnitude;
+			float distance = (InternalConfig::lanePositions[lanePositionsIndex][i] - position).magnitude;
 
 			if (distance < nearestDistance) {
 				nearestLane = i;
@@ -76,7 +108,7 @@ namespace RoBeats {
 			}
 		}
 
-		return nearestLane;
+		return Lane{ nearestLane != -1 ? InternalConfig::lanePositions[lanePositionsIndex][nearestLane] : Vector3 { 0, 0, 0 }, nearestLane};
 	}
 
 	float RandomDistance() {

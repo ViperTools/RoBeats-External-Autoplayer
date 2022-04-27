@@ -45,28 +45,25 @@ struct TextLabel : Instance {
 struct BasePart : Instance {
 	using Instance::Instance;
 
-	inline int GetShape() const {
-		float shape = Read<float>(addr + 0x100);
-		return shape == 1 ? 0 : (shape == 257 ? 1 : 2);
-	}
-
 	 Vector3 GetPosition() const {
-		float v[3];
-		Read(Read<uintptr_t>(addr + 0xC0) + 0x104, v, sizeof(float) * 3);
-		return { v[0], v[1], v[2] };
+		return Read<Vector3>(Read<uintptr_t>(addr + 0xC0) + 0x104);
 	}
 };
 
 struct Camera : Instance {
 	using Instance::Instance;
 
-	Vector3 GetPosition() const {
-		float v[3];
-		Read(addr + 0xAC, v, sizeof(float) * 3);
-		return { v[0], v[1], v[2] };
+	Vector3 GetPosition() {
+		return Read<Vector3>(addr + 0xAC);
 	}
 
-	bool IsScriptable () {
+	Vector3 GetLookVector() {
+		float cframe[12];
+		Read(addr + 0x88, cframe, sizeof(float) * 12);
+		return { -cframe[2], -cframe[5], -cframe[8] };
+	}
+
+	bool IsScriptable() {
 		return Read<int>(addr + 0x1C8) == 6;
 	}
 };
@@ -90,27 +87,19 @@ struct GuiService : Instance {
 struct Adornment : Instance {
 	using Instance::Instance;
 
-	bool Visible = false;
-	Vector3 Position{ 0, 0, 0 };
-	float Transparency = 0, Height = 0, Radius = 0;
-	bool CFrameChanged = false;
-	bool IsCylinder;
+	bool Visible = false, CFrameChanged = false;
+	Vector3 Position{ 0, 0, 0 }, LookVector{ 0, 0, 0 };
+	float Transparency = 0, Height = 0;
 
 	void Update() {
 		Vector3 lastPos = Position;
-		float v[3];
-		Read(addr + 0xF8, v, sizeof(float) * 3);
-		Position = { v[0], v[1], v[2] };
+		float cframe[12];
+		Read(addr + 0xD4, cframe, sizeof(float) * 12);
+		Position = { cframe[9], cframe[10], cframe[11] };
+		LookVector = { -cframe[2], -cframe[5], -cframe[8] };
 		CFrameChanged = Position != lastPos;
 		Transparency = Read<float>(addr + 0x98);
-		Radius = Read<float>(addr + 0x110);
-		if (IsCylinder) {
-			Height = Read<float>(addr + 0x114);
-		}
+		Height = Read<float>(addr + 0x114);
 		Visible = Read<bool>(addr + 0x9C);
-	}
-
-	Adornment(uintptr_t addr) : Instance(addr) {
-		IsCylinder = GetClass() == "CylinderHandleAdornment";
 	}
 };

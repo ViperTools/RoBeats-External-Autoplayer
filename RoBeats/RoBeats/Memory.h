@@ -7,6 +7,7 @@
 #include <string>
 #include <ntstatus.h>
 #include <vector>
+#include "Vector3.h"
 using std::string;
 using std::wstring;
 using std::vector;
@@ -42,4 +43,12 @@ T Read(const uintptr_t addr) {
 	if (NtReadVirtualMemory(hProc, (LPVOID)addr, &buf, sizeof(buf), 0) != STATUS_SUCCESS)
 		return {};
 	return buf;
+}
+
+template<>
+inline Vector3 Read(const uintptr_t addr) {
+	float buf[3];
+	if (NtReadVirtualMemory(hProc, (LPVOID)addr, &buf, sizeof(float) * 3, 0) != STATUS_SUCCESS)
+		return { 0, 0, 0 };
+	return { buf[0], buf[1], buf[2] };
 }
