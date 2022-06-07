@@ -14,6 +14,7 @@ Although I called it *attaching*, the auto player does not actually inject anyth
 
 ## Notes
 
+* 1x note speed is optimal, but it should work on most other note speeds.
 * You must build in x86 if building it yourself.
 * RoBeats External **does** auto update, but Roblox occasionally changes things that will break the auto player. If it stops working or an error code comes up suggesting it is not updated, let me know and I will look into it.
 * This only works on the 3D mode. 2D does not currently work, but support is planned for the future.
@@ -26,5 +27,5 @@ Although I called it *attaching*, the auto player does not actually inject anyth
 * **As specified in the license, all distribution of any portion of this work must be released along with its full source and the same license attached. All modifications of the source must be documented. This includes everything in this repository.**
 
 ## VirusTotal
-Here is the VirusTotal analysis for Release 1.0: https://www.virustotal.com/gui/file/a5b8bbe3ea7d7520f8a855aad57dd279c0027f0c3f7153c7bf543947bba7e48a?nocache=1
+Here is the VirusTotal analysis for Release 1.0: https://www.virustotal.com/gui/file/5da7156521f3095e7ed7521540b8d59b2b2d0e54738effe312ec6c285037c8b9?nocache=1
 <br>If you still don't trust it, just read the source and build it yourself.
