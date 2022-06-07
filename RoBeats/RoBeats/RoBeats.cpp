@@ -9,7 +9,7 @@ using namespace RoBeats;
 Instance RoBeats::game;
 Workspace RoBeats::workspace;
 GuiService RoBeats::guiService;
-Bound<float> InternalConfig::distanceBound{ 0.3, 0.8 };
+Bound<float> InternalConfig::distanceBound{ 0.3, 0.7 };
 Bound<int> InternalConfig::delayBound{ 10, 13 };
 
 vector<vector<Vector3>> InternalConfig::lanePositions {
@@ -70,7 +70,7 @@ namespace RoBeats {
 
 	void Reset() {
 		for (int i = 0; i < 4; i++) {
-			if (delays[i]) {
+			if (delays[i] || heldLanes[i]) {
 				delays[i] = 0;
 				heldLanes[i] = false;
 				RbxInput::Release(keys[i]);
