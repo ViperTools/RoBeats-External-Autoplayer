@@ -34,11 +34,11 @@ protected:
 struct TextLabel : Instance {
 	using Instance::Instance;
 	string GetText() const {
-		int len = Read<int>(addr + 0x3C4);
+		int len = Read<int>(addr + 0x664);
 		if (len >= 16) {
-			return ReadString(Read<uintptr_t>(addr + 0x3CC), len);
+			return ReadString(Read<uintptr_t>(addr + 0x66C), len);
 		}
-		return ReadString(addr + 0x3CC, len);
+		return ReadString(addr + 0x66C, len);
 	}
 };
 
@@ -46,7 +46,7 @@ struct BasePart : Instance {
 	using Instance::Instance;
 
 	 Vector3 GetPosition() const {
-		return Read<Vector3>(Read<uintptr_t>(addr + 0xC0) + 0x104);
+		return Read<Vector3>(Read<uintptr_t>(addr + 0xE8) + 0xFC);
 	}
 };
 
@@ -54,17 +54,17 @@ struct Camera : Instance {
 	using Instance::Instance;
 
 	Vector3 GetPosition() {
-		return Read<Vector3>(addr + 0xAC);
+		return Read<Vector3>(addr + 0xE8);
 	}
 
 	Vector3 GetLookVector() {
 		float cframe[12];
-		Read(addr + 0x88, cframe, sizeof(float) * 12);
+		Read(addr + 0xC4, cframe, sizeof(float) * 12);
 		return { -cframe[2], -cframe[5], -cframe[8] };
 	}
 
 	bool IsScriptable() {
-		return Read<int>(addr + 0x1C8) == 6;
+		return Read<int>(addr + 0x204) == 6;
 	}
 };
 
@@ -72,7 +72,7 @@ struct Workspace : Instance {
 	Camera CurrentCamera;
 
 	Workspace(uintptr_t addr = 0) : Instance(addr) {
-		CurrentCamera = Camera(Read<uintptr_t>(addr + 0x310));
+		CurrentCamera = Camera(Read<uintptr_t>(addr + 0x378));
 	}
 };
 
@@ -80,7 +80,7 @@ struct GuiService : Instance {
 	using Instance::Instance;
 
 	bool IsMenuOpen() {
-		return Read<bool>(addr + 0x1B4);
+		return Read<bool>(addr + 0x2B4);
 	}
 };
 
@@ -94,12 +94,12 @@ struct Adornment : Instance {
 	void Update() {
 		Vector3 lastPos = Position;
 		float cframe[12];
-		Read(addr + 0xD4, cframe, sizeof(float) * 12);
+		Read(addr + 0x138, cframe, sizeof(float) * 12);
 		Position = { cframe[9], cframe[10], cframe[11] };
 		LookVector = { -cframe[2], -cframe[5], -cframe[8] };
 		CFrameChanged = Position != lastPos;
-		Transparency = Read<float>(addr + 0x98);
-		Height = Read<float>(addr + 0x114);
-		Visible = Read<bool>(addr + 0x9C);
+		Transparency = Read<float>(addr + 0xBC);
+		Height = Read<float>(addr + 0x178);
+		Visible = Read<bool>(addr + 0xC0);
 	}
 };

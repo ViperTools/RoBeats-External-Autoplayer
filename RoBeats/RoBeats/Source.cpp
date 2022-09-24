@@ -111,19 +111,20 @@ extern "C" {
 		if (!hProc)
 			return 1;
 
-		uintptr_t workspace_vftable = Read<uintptr_t>(ScanSignature("C7 07 ? ? ? ? C7 47 70 ? ? ? ? C7 87 8C 00 00 00 ? ? ? ? C7 87 80 01 00 00 ? ? ? ? C7 87 84 01 00 00 ? ? ? ? C7 87 20 02 00 00 ? ? ? ? C7 87 24 02 00 00 ? ? ? ? 8B 40 04 C7 44 38 6C ? ? ? ? 8B 47 6C 8B 48 04 8D 81 50 FC FF FF 89 44 39 68 C7 87 2C 02 00 00 ? ? ? ?", 2));
+		uintptr_t workspace_vftable = Read<uintptr_t>(ScanSignature("C7 07 ? ? ? ? C7 87 98 00 00 00 ? ? ? ? C7 87 B4 00 00 00 ? ? ? ? C7 87 B4 01 00 00 ? ? ? ? C7 87 B8 01 00 00 ? ? ? ? C7 87 54 02 00 00 ? ? ? ? C7 87 58 02 00 00 ? ? ? ? 8B 40 04 C7 84 38 90 00 00 00 ? ? ? ? 8B 87 90 00 00 00 8B 48 04 8D 81 E4 FB FF FF 89 84 39 8C 00 00 00 8B 9F A0 03 00 00", 2));
 		uintptr_t workspaceAddr = ScanVFTable(workspace_vftable);
 
 		if (!workspaceAddr)
 			return 2;
 
-		Instance _game = Instance(workspaceAddr).GetParent();
+		Workspace workspace(workspaceAddr);
+		Instance game = workspace.GetParent();
 
-		if (_game.GetClass() != "DataModel")
+		if (game.GetClass() != "DataModel")
 			return 3;
 
-		RoBeats::game = _game;
-		RoBeats::workspace = Workspace(game.FindFirstChildOfClass("Workspace"));
+		RoBeats::game = game;
+		RoBeats::workspace = workspace;
 		RoBeats::guiService = GuiService(game.FindFirstChildOfClass("GuiService"));
 
 		running = true;

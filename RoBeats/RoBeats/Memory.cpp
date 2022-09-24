@@ -33,6 +33,7 @@ DWORD GetProcessId(wstring name) {
 	if (!EnumProcesses(aProcesses, sizeof(aProcesses), &cbNeeded))
 		return 0;
 	cProcesses = cbNeeded / sizeof(DWORD);
+
 	for (int i = 0; i < cProcesses; i++) {
 		if (aProcesses[i] != 0) {
 			HANDLE hProc = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, aProcesses[i]);
@@ -52,6 +53,7 @@ DWORD GetProcessId(wstring name) {
 			}
 		}
 	}
+
 	return 0;
 }
 

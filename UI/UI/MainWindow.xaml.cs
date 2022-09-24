@@ -147,10 +147,9 @@ namespace UI
 
         void StartServer()
         {
-            NamedPipeServerStream server = new("RoBeatsPipe");
+            NamedPipeServerStream server = new("RoBeatsPipe");  
             Task.Factory.StartNew(() =>
             {
-                Console.WriteLine("Started server");
                 server.WaitForConnection();
                 StreamReader reader = new(server);
                 while (true)
